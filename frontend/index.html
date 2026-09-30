@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerPlay</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header>
+    <h1>PowerPlay</h1>
+    <a href="login/login.html"><i class="fas fa-user profile-icon"></i></a>
+    <a href="carrinho/carrinho00.html"><i class="fas fa-shopping-cart cart-icon"></i></a>
+</header>
+
+<nav>
+    <a href="index.html">Todos</a>
+    <a href="nav/blusa.html">Blusas</a>
+    <a href="nav/casaco.html">Casacos</a>
+    <a href="nav/boot.html">Tênis</a>
+    <a href="nav/acessorio.html">Acessórios</a>
+</nav>
+
+<section class="product-container" id="product-container">
+    <p>Carregando produtos...</p>
+</section>
+
+<script>
+const API = "http://localhost:8080/loja/api/v1";
+
+function moeda(valor) {
+    return Number(valor).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
+async function carregarProdutos() {
+    const container = document.getElementById("product-container");
+
+    try {
+        const response = await fetch(API + "/produtos");
+        if (!response.ok) throw new Error();
+
+        const produtos = await response.json();
+        container.innerHTML = "";
+
+        produtos.forEach(produto => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+
+            card.innerHTML = `
+                <img src="img/${produto.imagem}" alt="${produto.nome}">
+                <h2>${produto.nome}</h2>
+                <p class="price">${moeda(produto.preco)}</p>
+                <p>Estoque: ${produto.estoque}</p>
+                <a href="produtos/${produto.pagina}">
+                    <button>Comprar</button>
+                </a>
+                <button class="b1" onclick="adicionarCarrinho(${produto.id})">
+                    Carrinho
+                </button>
+            `;
+
+            container.appendChild(card);
+        });
+    } catch (erro) {
+        container.innerHTML =
+            "<p>Não foi possível conectar à API. Inicie o backend Java.</p>";
+    }
+}
+
+function adicionarCarrinho(id) {
+    const carrinho = JSON.parse(localStorage.getItem("powerplay_carrinho") || "[]");
+    const item = carrinho.find(i => i.produtoId === id);
+
+    if (item) {
+        item.quantidade++;
+    } else {
+        carrinho.push({ produtoId: id, quantidade: 1 });
+    }
+
+    localStorage.setItem("powerplay_carrinho", JSON.stringify(carrinho));
+    alert("Produto adicionado ao carrinho!");
+}
+
+carregarProdutos();
+</script>
+</body>
+</html>

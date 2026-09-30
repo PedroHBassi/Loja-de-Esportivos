@@ -1,0 +1,53 @@
+### Listar produtos
+GET http://localhost:8080/loja/api/v1/produtos
+
+### Buscar produto
+GET http://localhost:8080/loja/api/v1/produtos/1
+
+### Filtrar categoria
+GET http://localhost:8080/loja/api/v1/produtos?categoria=Blusas
+
+### Cadastrar produto
+POST http://localhost:8080/loja/api/v1/produtos
+Content-Type: application/json
+
+{
+  "nome": "Meião Esportivo",
+  "descricao": "Meião para futebol",
+  "categoria": "Acessórios",
+  "preco": 39.90,
+  "imagem": "garrafa.jpeg",
+  "estoque": 20,
+  "pagina": "p6.html"
+}
+
+### Login
+POST http://localhost:8080/loja/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "cliente@powerplay.com",
+  "senha": "123456"
+}
+
+### Criar pedido
+POST http://localhost:8080/loja/api/v1/pedidos
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "endereco": "Rua Exemplo, 100",
+  "cidade": "Araraquara",
+  "estado": "SP",
+  "pagamento": "pix",
+  "itens": [
+    {
+      "produtoId": 1,
+      "quantidade": 1
+    },
+    {
+      "produtoId": 6,
+      "quantidade": 2
+    }
+  ]
+}

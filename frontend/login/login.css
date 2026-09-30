@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.back-icon {
+  font-size: 34px;
+  position: absolute;
+  top: 20px;
+  right: 1475px;
+  cursor: pointer;
+  color: #29c129;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    background-color: #000000;
+    color: white;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #29c129;
+}
+
+.container {
+    margin: 60px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #29c129;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+label {
+    margin-bottom: 5px;
+    display: block;
+    color: #020202;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #000000;
+    color: white;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: #29c129;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+#mensagem-erro {
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.cart-icon {
+    font-size: 34px;
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    cursor: pointer;
+    color: #29c129;
+}
+
+.cart-icon:hover{
+    color: #196919;
+}
+
+.profile-icon{
+    font-size: 34px;
+    position: absolute;
+    top: 20px;
+    right: 175px;
+    cursor: pointer;
+    color: #29c129;
+}
+
+.profile-icon:hover{
+    color: #196919;
+ }
+
+
+.back-icon {
+    font-size: 34px;
+    position: absolute;
+    top: 20px;
+    right: 1475px;
+    cursor: pointer;
+    color: #29c129;
+}
+
+.back-icon:hover {
+    color: #196919;
+}
